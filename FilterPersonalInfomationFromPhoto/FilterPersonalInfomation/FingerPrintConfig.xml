@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Path>
+  <exe_openpose_bat>ここにexe_openpose.batのパスを記入</exe_openpose_bat>
+  
+  <openpose>ここにOpenPoseのパスを記入</openpose>
+
+  <python>ここにpython.exeのパスを記入</python>
+
+  <analyze_json_python>ここにanalyze_json.pyのパスを記入</analyze_json_python>
+  
+</Path>
+
+
