@@ -79,11 +79,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FilterPersonalInfomation\FilterPersonalInfomation.csproj">
-      <Project>{0296a737-d8fd-44a4-864a-70ab99808fe8}</Project>
-      <Name>FilterPersonalInfomation</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
