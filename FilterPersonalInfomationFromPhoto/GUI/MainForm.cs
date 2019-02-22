@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FilterPersonalInfomation;
 
 namespace GUI
 {
@@ -49,8 +48,23 @@ namespace GUI
 
         private void filtering_button_Click(object sender, EventArgs e)
         {
-            filePath_textBox.Text = FilterFingerPrint.DrawFilteredFingerPrint(filePath_textBox.Text);
-            selectedImage_pictureBox.ImageLocation = filePath_textBox.Text;
+            if (eyeReflection_checkBox.Checked)
+            {
+                // 目の反射のフィルタリング
+                //filteredFilePath = filterEyeReflection(filteredFilePath);
+            }
+
+            if (fingerPrint_checkBox.Checked)
+            {
+                // 指紋のフィルタリング
+                //filteredFilePath = filterFingerPrint(filteredFilePath);
+            }
+
+            if (word_checkBox.Checked)
+            {
+                // 文字のフィルタリング
+                //filteredFilePath = filterWord(filteredFilterPath);
+            }
         }
     }
 }
