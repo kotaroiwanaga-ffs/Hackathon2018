@@ -49,28 +49,8 @@ namespace GUI
 
         private void filtering_button_Click(object sender, EventArgs e)
         {
-            string filteredFilePath = filePath_textBox.Text;
-
-            // チェックのついている項目のフィルタリングのみ行う
-            // 引数：画像ファイルパス, 戻り値：フィルタリング後の画像を保存したファイルパス
-
-            if(eyeReflection_checkBox.Checked)
-            {
-                // 目の反射のフィルタリング
-                //filteredFilePath = filterEyeReflection(filteredFilePath);
-            }
-
-            if(fingerPring_checkBox.Checked)
-            {
-                // 指紋のフィルタリング
-                //filteredFilePath = filterFingerPrint(filteredFilePath);
-            }
-
-            if(word_checkBox.Checked)
-            {
-                // 文字のフィルタリング
-                //filteredFilePath = filterWord(filteredFilterPath);
-            }
+            filePath_textBox.Text = FilterFingerPrint.DrawFilteredFingerPrint(filePath_textBox.Text);
+            selectedImage_pictureBox.ImageLocation = filePath_textBox.Text;
         }
     }
 }
