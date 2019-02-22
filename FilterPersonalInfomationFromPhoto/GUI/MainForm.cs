@@ -48,6 +48,8 @@ namespace GUI
 
         private void filtering_button_Click(object sender, EventArgs e)
         {
+            string filteredFilePath = filePath_textBox.Text;
+
             if (eyeReflection_checkBox.Checked)
             {
                 // 目の反射のフィルタリング
@@ -65,6 +67,8 @@ namespace GUI
                 // 文字のフィルタリング
                 //filteredFilePath = filterWord(filteredFilterPath);
             }
+
+            selectedImage_pictureBox.ImageLocation = filteredFilePath;
         }
     }
 }
