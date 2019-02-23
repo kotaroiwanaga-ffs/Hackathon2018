@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,7 +24,7 @@ namespace GUI
             ofd.FilterIndex = 1;
             ofd.RestoreDirectory = true;
 
-            if(ofd.ShowDialog() == DialogResult.OK)
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
                 filePath_textBox.Text = ofd.FileName;
                 try
@@ -37,20 +34,39 @@ namespace GUI
                     filtering_button.Enabled = true;
 
                 }
-                catch(Exception)
+                catch (Exception)
 
                 {
                     filtering_button.Enabled = false;
                     MessageBox.Show("選択したファイルが不正です");
                 }
-                
+
             }
         }
 
         private void filtering_button_Click(object sender, EventArgs e)
         {
-            filePath_textBox.Text = FilterFingerPrint.DrawFilteredFingerPrint(filePath_textBox.Text);
-            selectedImage_pictureBox.ImageLocation = filePath_textBox.Text;
+            string filteredFilePath = filePath_textBox.Text;
+
+            if (eyeReflection_checkBox.Checked)
+            {
+                // 目の反射のフィルタリング
+                filteredFilePath = FilterFingerPrint.DrawFilteredFingerPrint(filteredFilePath);
+            }
+
+            if (fingerPrint_checkBox.Checked)
+            {
+                // 指紋のフィルタリング
+                filteredFilePath = FilterFingerPrint.DrawFilteredFingerPrint(filteredFilePath);
+            }
+
+            if (word_checkBox.Checked)
+            {
+                // 文字のフィルタリング
+                //filteredFilePath = filterWord(filteredFilterPath);
+            }
+
+            selectedImage_pictureBox.ImageLocation = filteredFilePath;
         }
     }
 }
