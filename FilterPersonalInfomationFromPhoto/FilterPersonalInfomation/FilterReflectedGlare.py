@@ -20,6 +20,12 @@ import cv2
 import numpy as np
 import sys
 
+
+filePath = './ReflectedGlareConfig.json'
+f = open(filePath, 'r')
+config = json.load(f) #JSON形式で読み込む
+print(config["AzureKey"])
+
 #### Request headers
 #'Content-Type': APIに送るメディアのタイプ. 
 #  'application/json'(URL指定の場合), 'application/octet-stream' (Local ファイル転送の場合)
@@ -27,7 +33,7 @@ import sys
 headers = {
 #    'Content-Type': 'application/json',
     'Content-Type': 'application/octet-stream',
-    'Ocp-Apim-Subscription-Key': 'a2d862cce7b64efeb10117c6209816a8',
+    'Ocp-Apim-Subscription-Key': config["AzureKey"],
 }
  
 #### Request parameters
