@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FilterPersonalInfomation;
 
 namespace GUI
 {
@@ -26,7 +24,7 @@ namespace GUI
             ofd.FilterIndex = 1;
             ofd.RestoreDirectory = true;
 
-            if(ofd.ShowDialog() == DialogResult.OK)
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
                 filePath_textBox.Text = ofd.FileName;
                 try
@@ -36,13 +34,13 @@ namespace GUI
                     filtering_button.Enabled = true;
 
                 }
-                catch(Exception)
+                catch (Exception)
 
                 {
                     filtering_button.Enabled = false;
                     MessageBox.Show("選択したファイルが不正です");
                 }
-                
+
             }
         }
 
@@ -53,13 +51,13 @@ namespace GUI
             if (eyeReflection_checkBox.Checked)
             {
                 // 目の反射のフィルタリング
-                //filteredFilePath = filterEyeReflection(filteredFilePath);
+                filteredFilePath = FilterFingerPrint.DrawFilteredFingerPrint(filteredFilePath);
             }
 
             if (fingerPrint_checkBox.Checked)
             {
                 // 指紋のフィルタリング
-                //filteredFilePath = filterFingerPrint(filteredFilePath);
+                filteredFilePath = FilterFingerPrint.DrawFilteredFingerPrint(filteredFilePath);
             }
 
             if (word_checkBox.Checked)
