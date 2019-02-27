@@ -1,4 +1,5 @@
-﻿using System.Data;
+using System;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -51,7 +52,7 @@ namespace GUI
             if (eyeReflection_checkBox.Checked)
             {
                 // 目の反射のフィルタリング
-                filteredFilePath = FilterFingerPrint.DrawFilteredFingerPrint(filteredFilePath);
+                //filteredFilePath = FilterFingerPrint.DrawFilteredFingerPrint(filteredFilePath);
             }
 
             if (fingerPrint_checkBox.Checked)
@@ -67,6 +68,7 @@ namespace GUI
             }
 
             selectedImage_pictureBox.ImageLocation = filteredFilePath;
+            filePath_textBox.Text = filteredFilePath;
         }
     }
 }
