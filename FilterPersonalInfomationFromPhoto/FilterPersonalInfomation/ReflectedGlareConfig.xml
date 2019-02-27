@@ -11,3 +11,4 @@
   
   <ApiPath>APIのパスを記入(例：/face/v1.0/detect）</ApiPath>
 </Root>
+
