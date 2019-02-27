@@ -1,4 +1,3 @@
-
 ##
 # cording:utf-8
 ##
@@ -59,12 +58,42 @@ def draw_coordinates_mosaic(people, image_path, output_path):
         y1 = min(pt1[1], pt2[1])
         y2 = max(pt1[1], pt2[1])
 
-        image = cv2.rectangle(img=image, pt1=pt1, pt2=pt2, color=(0, 0, 255), thickness=2)
+        w = abs(pt1[0] - pt2[0])
+        h = abs(pt1[1] - pt2[1])
+
+        if w == 0 or h == 0:
+            continue
+
+        w_h = w - h
+        if w_h >= 0:
+            y1 -= int(w_h / 2)
+            y2 += int(w_h / 2)
+        else:
+            x1 -= int(-w_h / 2)
+            x2 += int(-w_h / 2)
+
+        pt1_ = correct_coordinates((x1, y1), image)
+        pt2_ = correct_coordinates((x2, y2), image)
+
+        # image = cv2.rectangle(img=image, pt1=pt1_, pt2=pt2_, color=(0, 0, 255), thickness=2)
         clipped = image[y1:y2, x1:x2]
         clipped = cv2.blur(clipped, (10, 10))
         image[y1:y2, x1:x2] = clipped
 
     cv2.imwrite(output_path, image)
+
+
+def correct_coordinates(pt, image):
+    h, w, c = image.shape
+
+    x = max(pt[0], 0)
+    x = min(x, w)
+    y = max(pt[1], 0)
+    y = min(y, h)
+
+    pt_ = (x, y)
+
+    return pt_
 
 
 def get_coordinates_itr(people):

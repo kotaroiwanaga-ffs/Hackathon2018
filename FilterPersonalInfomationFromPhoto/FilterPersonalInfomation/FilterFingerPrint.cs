@@ -25,6 +25,8 @@ namespace FilterPersonalInfomation
 
             Process p = new Process();
             p.StartInfo.CreateNoWindow = true;
+            p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            p.StartInfo.UseShellExecute = false;
             p.StartInfo.FileName = pathConfig.Element("exe_openpose_bat").Value;
             p.StartInfo.Arguments = "\"" + pathConfig.Element("openpose").Value + "\" \"" + outputDir + "\" \"" + outputDir + "\"";
             p.Start();
