@@ -15,8 +15,8 @@ namespace FilterPersonalInfomation
         public static string DrawFilteredReflectedGlare(string imagePath)
         {
             
-            XDocument xml = XDocument.Load("FingerPrintConfig.xml");
-            XElement pathConfig = xml.Element("Path");
+            XDocument xml = XDocument.Load("ReflectedGlareConfig.xml");
+            XElement pathConfig = xml.Element("Root");
 
             string imageDir = Path.GetDirectoryName(imagePath);
             string imageName = Path.GetFileName(imagePath);
@@ -29,7 +29,8 @@ namespace FilterPersonalInfomation
             p.StartInfo.CreateNoWindow = true;
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.FileName = pathConfig.Element("python").Value;
-            string python_path = pathConfig.Element("analyze_json_python").Value;
+            string python_path = pathConfig.Element("exec_python").Value;
+
             //string jsonPath = Path.Combine(outputDir, Path.GetFileNameWithoutExtension(copyImagePath) + "_keypoints.json");
             string outputImagePath = Path.Combine(outputDir, "output_" + imageName);
             //p.StartInfo.Arguments = "\"" + python_path + "\"";

@@ -5,9 +5,9 @@
   
   <openpose>ここにOpenPoseのパスを記入</openpose>
 
-  <python>ここにpython.exeのパスを記入</python>
+  <python>C:\Users\juggl\AppData\Local\Programs\Python\Python37-32\python.exe</python>
 
-  <analyze_json_python>ここにanalyze_json.pyのパスを記入</analyze_json_python>
+  <analyze_json_python>C:\hakkason\Hackathon2018\FilterPersonalInfomationFromPhoto\FilterPersonalInfomation\FilterReflectedGlare.py</analyze_json_python>
   
 </Path>
 
