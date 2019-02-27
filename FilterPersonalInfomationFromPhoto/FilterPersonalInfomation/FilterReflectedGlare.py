@@ -22,6 +22,7 @@ import sys
 import os
 import xml.etree.ElementTree as ET
 
+
 base = os.path.dirname(os.path.abspath(__file__))
 name = os.path.normpath(os.path.join(base, '../local/local_db'))
 

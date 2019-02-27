@@ -30,6 +30,7 @@ namespace FilterPersonalInfomation
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.FileName = pathConfig.Element("python").Value;
             string python_path = pathConfig.Element("exec_python").Value;
+
             //string jsonPath = Path.Combine(outputDir, Path.GetFileNameWithoutExtension(copyImagePath) + "_keypoints.json");
             string outputImagePath = Path.Combine(outputDir, "output_" + imageName);
             //p.StartInfo.Arguments = "\"" + python_path + "\"";
