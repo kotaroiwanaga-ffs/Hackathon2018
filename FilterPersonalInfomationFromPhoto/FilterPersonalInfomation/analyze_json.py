@@ -75,7 +75,7 @@ def draw_coordinates_mosaic(people, image_path, output_path):
         pt1_ = correct_coordinates((x1, y1), image)
         pt2_ = correct_coordinates((x2, y2), image)
 
-        # image = cv2.rectangle(img=image, pt1=pt1_, pt2=pt2_, color=(0, 0, 255), thickness=2)
+        image = cv2.rectangle(img=image, pt1=pt1_, pt2=pt2_, color=(0, 0, 255), thickness=2)
         clipped = image[y1:y2, x1:x2]
         clipped = cv2.blur(clipped, (10, 10))
         image[y1:y2, x1:x2] = clipped
