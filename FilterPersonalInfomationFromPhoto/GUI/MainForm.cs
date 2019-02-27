@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -52,7 +52,7 @@ namespace GUI
             if (eyeReflection_checkBox.Checked)
             {
                 // 目の反射のフィルタリング
-                //filteredFilePath = filterEyeReflection(filteredFilePath);
+                //filteredFilePath = FilterFingerPrint.DrawFilteredFingerPrint(filteredFilePath);
             }
 
             if (fingerPrint_checkBox.Checked)

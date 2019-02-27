@@ -1,3 +1,4 @@
+
 ##
 # cording:utf-8
 ##
@@ -86,5 +87,3 @@ if __name__ == '__main__':
     args = sys.argv
     if len(args) >= 4:
         main(args[1], args[2], args[3])
-    else:
-        main()
