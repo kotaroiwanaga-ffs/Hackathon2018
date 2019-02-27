@@ -19,9 +19,12 @@ import json
 import cv2
 import numpy as np
 import sys
+import os
 
+base = os.path.dirname(os.path.abspath(__file__))
+name = os.path.normpath(os.path.join(base, '../local/local_db'))
 
-filePath = './ReflectedGlareConfig.json'
+filePath = os.path.normpath(os.path.join(base, './ReflectedGlareConfig.json'))
 f = open(filePath, 'r')
 config = json.load(f) #JSON形式で読み込む
 print(config["AzureKey"])
@@ -60,8 +63,8 @@ params = urllib.parse.urlencode({
  
 ## Local file指定の場合
 # 以下の image_file_path に読み込むファイルのパスを指定する
-image_file_path = 'test.jpg'
-output_file_path = 'test_out.jpg'
+image_file_path = os.path.normpath(os.path.join(base, 'test.jpg'))
+output_file_path = os.path.normpath(os.path.join(base, 'test_out.jpg'))
  
 #### API request
 # 接続先リージョンによっては, 以下HTTPSConnection の "westus.api.cognitive.microsoft.com" 部分は変更する.
@@ -108,8 +111,9 @@ def main(image_file_path):
  
 def retouchEye(img, landmarks):
     height = landmarks["eyeLeftBottom"]["y"] - landmarks["eyeLeftTop"]["y"]
-    img = detectPupil(img, landmarks["pupilLeft"],int(height*0.9/2))
-    img = detectPupil(img, landmarks["pupilRight"], int(height * 0.9 / 2))
+    radius = int(height*1/2)
+    img = detectPupil(img, landmarks["pupilLeft"],radius)
+    img = detectPupil(img, landmarks["pupilRight"],radius)
     return img
 
 
@@ -127,13 +131,19 @@ def detectPupil(img, pupil,radius):
     roi = (pup["x"] - radius, pup["x"] + radius, pup["y"] - radius, pup["y"] + radius)
     print (roi)
     gauss = int(radius / 2) * 2 -1
-    print("gauss:"+str(gauss))
     
+
+    for i in range(1,radius+2,3):
+        print(range(pup["y"]-i,pup["y"]+i))
+        gauss = int( (radius - i) / 2) * 2 + 3
+        print("gauss:"+str(gauss))
+        img[pup["y"]-i : pup["y"]+i, pup["x"]-i : pup["x"]+i] = cv2.GaussianBlur(img[pup["y"]-i : pup["y"]+i, pup["x"]-i : pup["x"]+i], (gauss, gauss), 0)
     ### 画像ぼかし本処理
     #img[roi[2] : roi[3], roi[0] : roi[1]] = cv2.GaussianBlur(img[roi[2] : roi[3], roi[0] : roi[1]], (5,5), 0)
     #img[ roi[2] : roi[3], roi[0] : roi[1]] = cv2.medianBlur(img[ roi[2] : roi[3], roi[0] : roi[1]], i*2+1)
-    img[ roi[2]+2 : roi[3]-2, roi[0]+2 : roi[1]-2] = cv2.GaussianBlur(img[ roi[2]+2 : roi[3]-2, roi[0]+2 : roi[1]-2],(gauss,gauss), 0)
-    img[roi[2] : roi[3], roi[0] : roi[1]] = cv2.GaussianBlur(img[roi[2] : roi[3], roi[0] : roi[1]], (3, 3), 0)
+
+    #img[ roi[2]+2 : roi[3]-2, roi[0]+2 : roi[1]-2] = cv2.GaussianBlur(img[ roi[2]+2 : roi[3]-2, roi[0]+2 : roi[1]-2],(gauss,gauss), 0)
+    #img[roi[2] : roi[3], roi[0] : roi[1]] = cv2.GaussianBlur(img[roi[2] : roi[3], roi[0] : roi[1]], (3, 3), 0)
     #for i in range(5):
     #    )
     #     #img[roi[0] : roi[1], roi[2] : roi[3]] = cv2.GaussianBlur(img[roi[0] : roi[1], roi[2] : roi[3]], (11, 11),0)

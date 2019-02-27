@@ -52,7 +52,7 @@ namespace GUI
             if (eyeReflection_checkBox.Checked)
             {
                 // 目の反射のフィルタリング
-                //filteredFilePath = FilterFingerPrint.DrawFilteredFingerPrint(filteredFilePath);
+                filteredFilePath = FilterReflectedGlare.DrawFilteredReflectedGlare(filteredFilePath);
             }
 
             if (fingerPrint_checkBox.Checked)
