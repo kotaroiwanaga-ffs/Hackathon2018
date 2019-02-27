@@ -64,7 +64,7 @@ namespace GUI
             if (word_checkBox.Checked)
             {
                 // 文字のフィルタリング
-                //filteredFilePath = filterWord(filteredFilterPath);
+                OCRMain.OCR_MAIN(filteredFilePath, @"C:\result.jpg");
             }
 
             selectedImage_pictureBox.ImageLocation = filteredFilePath;
