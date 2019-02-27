@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Root>
+  <python>ここにpythonのパスを記入</python>
+
+  <exec_python>ここに実行するpythonファイルのパスを記入</exec_python>
+  
+  <AzureKey>Azureのアクセスキーを記入</AzureKey>
+  
+  <ApiHost>APIのホストを記入</ApiHost>
+  
+  <ApiPath>APIのパスを記入(例：/face/v1.0/detect）</ApiPath>
+</Root>
