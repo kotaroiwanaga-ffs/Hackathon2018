@@ -20,14 +20,20 @@ import cv2
 import numpy as np
 import sys
 import os
+import xml.etree.ElementTree as ET
 
 base = os.path.dirname(os.path.abspath(__file__))
 name = os.path.normpath(os.path.join(base, '../local/local_db'))
 
-filePath = os.path.normpath(os.path.join(base, './ReflectedGlareConfig.json'))
-f = open(filePath, 'r')
-config = json.load(f) #JSON形式で読み込む
-print(config["AzureKey"])
+### json読み込み
+# filePath = os.path.normpath(os.path.join(base, './ReflectedGlareConfig.json'))
+# f = open(filePath, 'r')
+# config = json.load(f) #JSON形式で読み込む
+
+### xml読み込み
+filePath = os.path.normpath(os.path.join(base, './ReflectedGlareConfig.xml'))
+tree = ET.parse(filePath)
+root = tree.getroot()
 
 #### Request headers
 #'Content-Type': APIに送るメディアのタイプ. 
@@ -36,7 +42,7 @@ print(config["AzureKey"])
 headers = {
 #    'Content-Type': 'application/json',
     'Content-Type': 'application/octet-stream',
-    'Ocp-Apim-Subscription-Key': config["AzureKey"],
+    'Ocp-Apim-Subscription-Key': root.find("AzureKey").text,
 }
  
 #### Request parameters
@@ -76,8 +82,8 @@ def main(image_file_path):
         image_file = open(image_file_path,'rb')
         body = image_file.read()
         image_file.close()
-        conn = http.client.HTTPSConnection('japaneast.api.cognitive.microsoft.com')
-        conn.request("POST", "/face/v1.0/detect?%s" % params, body, headers)
+        conn = http.client.HTTPSConnection(root.find("ApiHost").text)
+        conn.request("POST", root.find("ApiPath").text + "?%s" % params, body, headers)
         response = conn.getresponse()
         data = json.loads(response.read())
         conn.close()
@@ -126,7 +132,7 @@ def detectPupil(img, pupil,radius):
     #     img, (pup["x"]-radius,pup["y"]-radius), (pup["x"]+radius,pup["y"]+radius),             
     #     (255,255,255), -1
     # )
-    print ("pix:" + str(img[pup["x"], pup["y"]]) + " radius:" + str(radius))
+    print ("pix:" + str(img[pup["y"],pup["x"]]) + " radius:" + str(radius))
     
     roi = (pup["x"] - radius, pup["x"] + radius, pup["y"] - radius, pup["y"] + radius)
     print (roi)
