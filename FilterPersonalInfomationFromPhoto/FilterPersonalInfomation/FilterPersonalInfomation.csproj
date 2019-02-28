@@ -49,7 +49,6 @@
   <ItemGroup>
     <Content Include="FingerPrintConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
     </Content>
     <Content Include="ReflectedGlareConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
