@@ -25,6 +25,7 @@ namespace GUI
             ofd.FilterIndex = 1;
             ofd.RestoreDirectory = true;
 
+
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 filePath_textBox.Text = ofd.FileName;
@@ -52,7 +53,7 @@ namespace GUI
             if (eyeReflection_checkBox.Checked)
             {
                 // 目の反射のフィルタリング
-                //filteredFilePath = FilterFingerPrint.DrawFilteredFingerPrint(filteredFilePath);
+                filteredFilePath = FilterReflectedGlare.DrawFilteredReflectedGlare(filteredFilePath);
             }
 
             if (fingerPrint_checkBox.Checked)
