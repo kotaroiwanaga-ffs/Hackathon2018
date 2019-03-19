@@ -12,6 +12,15 @@ https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/output.
 1. モデルの生成  
 models\getModels.batを実行する  
 
+**ここまでできたらOpenPoseDemo.exeが動くか確認してみる**  
+参考
+- コマンド
+https://qiita.com/wada-n/items/c747525f96efb6cb9a35  
+https://qiita.com/wada-n/items/e9e6653effc1e3d0c566  
+- 導入手順
+https://qiita.com/miu200521358/items/539aaa63f16869191508
+
+
 ### pythonのインストール 
 python3ならたぶん大丈夫  [インストール手順](https://www.python.jp/install/windows/install_py3.html)  
 windows 64bit なら[こちら](https://www.python.org/ftp/python/3.6.8/python-3.6.8-amd64.exe)  
