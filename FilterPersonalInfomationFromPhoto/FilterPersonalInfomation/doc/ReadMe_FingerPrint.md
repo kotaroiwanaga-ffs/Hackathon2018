@@ -14,10 +14,10 @@ models\getModels.batを実行する
 
 **ここまでできたらOpenPoseDemo.exeが動くか確認してみる**  
 参考
-- コマンド
+- コマンド  
 https://qiita.com/wada-n/items/c747525f96efb6cb9a35  
 https://qiita.com/wada-n/items/e9e6653effc1e3d0c566  
-- 導入手順
+- 導入手順  
 https://qiita.com/miu200521358/items/539aaa63f16869191508
 
 
