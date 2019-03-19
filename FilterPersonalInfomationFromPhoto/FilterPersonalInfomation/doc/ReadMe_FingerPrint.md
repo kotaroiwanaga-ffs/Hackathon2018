@@ -1,16 +1,22 @@
-### FilterFingerPrint.cs を使うための準備
+## FilterFingerPrint.cs を使うための準備
 
-1. **OpenPoseダウンロードしzip解凍**   
+### OpenPoseの設定
+1. OpenPoseのダウンロード
 こちらからダウンロード↓  
 https://github.com/CMU-Perceptual-Computing-Lab/openpose/releases/download/v1.4.0/openpose-1.4.0-win64-cpu-binaries.zip  
 GitHubのページ  
 https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/output.md  
 
-1. **pythonのインストール**  
+1. ダウンロードしたzipファイルを解凍し、空白のないパス以下に配置  
+
+1. モデルの生成  
+models\getModels.batを実行する  
+
+### pythonのインストール 
 python3ならたぶん大丈夫  [インストール手順](https://www.python.jp/install/windows/install_py3.html)  
 windows 64bit なら[こちら](https://www.python.org/ftp/python/3.6.8/python-3.6.8-amd64.exe)  
   
-1. FingerPrintConfig.xmlにパスを入力 (そのうち省略できるようにしたい)
+### FingerPrintConfig.xmlにパスを入力 (そのうち省略できるようにしたい)
 ```
 <?xml version="1.0" encoding="utf-8" ?>
 
